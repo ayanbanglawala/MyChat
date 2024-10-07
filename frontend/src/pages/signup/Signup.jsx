@@ -1,4 +1,5 @@
 import React from 'react'
+import GenderCheckbox from './GenderCheckbox'
 
 const Signup = () => {
     return (
@@ -42,6 +43,7 @@ const Signup = () => {
                                 <input type="text" className="grow" placeholder="Enter Username" />
                             </label>
                         </div>
+                        
                         <div>
                             <label className='label'>
                                 <span className=' text-base label-text'> Password</span>
@@ -60,6 +62,7 @@ const Signup = () => {
                                 <input type="password" className="grow" value="" placeholder='Enter Password' />
                             </label>
                         </div>
+                        
                         <div>
                             <label className='label'>
                                 <span className=' text-base label-text'> Confirm Password</span>
@@ -78,6 +81,7 @@ const Signup = () => {
                                 <input type="password" className="grow" value="" placeholder='Enter Confirm Password' />
                             </label>
                         </div>
+                    <GenderCheckbox/>
                         <div className='text-sm hover:underline hover:text-blue-600 mt-2 inline-block'> <a href="#"> Don't have an account? Register </a></div>
                     </div>
                         <button className="btn w-full btn-primary">Button</button>
