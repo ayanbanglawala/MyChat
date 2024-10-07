@@ -24,7 +24,10 @@ const userSchema = new mongoose.Schema({
         type:String,
         default: ""
     }
-});
+}, 
+    {
+        timestamps: true
+    });
 
 const User = mongoose.model("User", userSchema);
 
