@@ -1,19 +1,31 @@
-const GenderCheckbox = () => {
+const GenderCheckbox = ({ onCheckboxChange, selectGender }) => {
     return (
-        <div className='flex'>
-            <div class="form-control">
-                <label class="label cursor-pointer">
-                    <span class="label-text mx-2">Male</span>
-                    <input type="checkbox"  class="checkbox" />
-                </label>
-            </div>
-            <div class="form-control">
-                <label class="label cursor-pointer">
-                    <span class="label-text mx-2">Female</span>
-                    <input type="checkbox" class="checkbox" />
-                </label>
-            </div>
+      <div className='flex'>
+        <div className="form-control">
+          <label className={`label cursor-pointer ${selectGender === "male" ? "selected" : ""}`}>
+            <span className="label-text mx-2">Male</span>
+            <input
+              type="checkbox"
+              className="checkbox"
+              checked={selectGender === "male"}
+              onChange={() => { onCheckboxChange("male") }}
+            />
+          </label>
         </div>
+        <div className="form-control">
+          <label className={`label cursor-pointer ${selectGender === "female" ? "selected" : ""}`}>
+            <span className="label-text mx-2">Female</span>
+            <input
+              type="checkbox"
+              className="checkbox"
+              checked={selectGender === "female"}
+              onChange={() => { onCheckboxChange("female") }}
+            />
+          </label>
+        </div>
+      </div>
     );
-};
-export default GenderCheckbox;
+  };
+  
+  export default GenderCheckbox;
+  
