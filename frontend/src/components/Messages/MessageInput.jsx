@@ -4,13 +4,15 @@ import useSendMessage from "../../hooks/useSendMessage.js";
 
 const MessageInput = () => {
   const [message, setMessage] = useState("");
-  const {loading, sendMessage} = useSendMessage();
-  const handleSubmit = async(e)=>{
+  const { loading, sendMessage } = useSendMessage();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!message) return
+    if (!message) return; // Don't send empty messages
     await sendMessage(message);
-    setMessage("")
-  }
+    setMessage(""); // Clear input after sending
+  };
+
   return (
     <form className="px-4 my-3" onSubmit={handleSubmit}>
       <div className="w-full relative">
@@ -25,10 +27,11 @@ const MessageInput = () => {
           type="submit"
           className="absolute top-1/2 right-2 transform -translate-y-1/2 text-white"
         >
-          {loading ? <div className="loading, loading-spinner"></div>:<BsSend />}
+          {loading ? <div className="loading loading-spinner"></div> : <BsSend />}
         </button>
       </div>
     </form>
   );
 };
+
 export default MessageInput;
