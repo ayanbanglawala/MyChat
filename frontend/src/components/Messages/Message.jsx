@@ -14,7 +14,7 @@ const Message = (props) => {
       <div className={`chat-bubble  ${ props.message == "sender"? "bg-sky-600 text-white" : "" }`}>
         It was said that you would, destroy the Sith, not join them.
       </div>
-      <div className="chat-footer opacity-50">Seen at 12:46</div>
+      <div className="chat-footer opacity-50 text-gray-400">Seen at 12:46</div>
     </div>
   );
 };
