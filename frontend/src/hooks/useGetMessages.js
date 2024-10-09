@@ -1,36 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import useConversation from '../zustand/useConversation';
+import toast from 'react-hot-toast';
 
 const useGetMessages = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null); // State for handling errors
   const { messages, setMessages, selectedConversation } = useConversation();
 
+  const getMessages = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/message/${selectedConversation._id}`);
+      const data = await res.json();
+      if (data.error) throw new Error(data.error);
+      setMessages(data);
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const getMessages = async () => {
-      if (!selectedConversation?._id) return; // Prevent fetching if no conversation is selected
-
-      setLoading(true);
-      setError(null); // Reset error state before fetching
-      try {
-        const res = await fetch(`/api/message/${selectedConversation._id}`);
-        const data = await res.json();
-
-        if (!res.ok) throw new Error(data.error || 'Failed to fetch messages'); // Handle HTTP errors
-
-        setMessages(data);
-      } catch (error) {
-        setError(error.message); // Update error state
-        console.error(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getMessages(); // Call the function directly
+    if (selectedConversation?._id) getMessages();
   }, [selectedConversation?._id, setMessages]);
 
-  return { messages, loading, error }; // Return the error state
+  return { messages, loading, getMessages }; // Expose `getMessages`
 };
 
 export default useGetMessages;
