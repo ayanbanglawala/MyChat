@@ -3,11 +3,13 @@ import useGetMessages from "../../hooks/useGetMessages";
 import MessageSkeleton from "../skeletons/MessageSkeleton";
 import Message from "./Message";
 import { useSocketContext } from "../../context/SocketContext"; // Import your SocketContext
+import useListenMessages from "../../hooks/useListenMessages";
 
 const Messages = () => {
   const { messages, loading } = useGetMessages();
   const { socket } = useSocketContext(); // Get the socket from context
   const lastMessageRef = useRef(null); // Initialize the ref
+  useListenMessages();
 
   // Effect to scroll to the last message smoothly when messages change
   useEffect(() => {
