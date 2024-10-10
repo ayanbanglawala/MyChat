@@ -14,7 +14,7 @@ const useSignup = () => {
 
         setLoading(true);
         try {
-            const res = await fetch("/api/auth/signup", {
+            const res = await fetch("https://mychat-ycy8.onrender.com/api/auth/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -7,11 +7,6 @@ export default defineConfig({
   plugins: [react()],
   server:{
     port: 5000,
-    proxy: {
-      '/api': {
-        target: 'https://mychat-ycy8.onrender.com', // Update this line
-        changeOrigin: true,
-      },
-    },    
+       
   }
 })
