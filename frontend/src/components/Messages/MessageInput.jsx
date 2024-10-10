@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { BsSend } from "react-icons/bs";
 import useSendMessage from "../../hooks/useSendMessage.js";
+import useGetMessages from "../../hooks/useGetMessages.js"; // Import useGetMessages
 
 const MessageInput = () => {
   const [message, setMessage] = useState("");
   const { loading, sendMessage } = useSendMessage();
+  const { getMessages } = useGetMessages(); // Destructure getMessages
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!message) return; // Don't send empty messages
-    await sendMessage(message);
+
+    await sendMessage(message, getMessages); // Pass getMessages as callback
     setMessage(""); // Clear input after sending
   };
 
