@@ -10,7 +10,7 @@ import {
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter basename="/MyChat">
+    <BrowserRouter>
       <AuthContextProvider>
         <SocketContextProvider>
           <App />
