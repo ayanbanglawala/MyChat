@@ -10,7 +10,7 @@ const server = http.createServer(app);
 // Initialize Socket.io with CORS configuration
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5000"], // Match this with your frontend origin
+    origin: ["https://ayanbanglawala.github.io/MyChat"],  // Match this with your frontend origin
     methods: ["GET", "POST"],
   },
 });

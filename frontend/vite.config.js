@@ -9,9 +9,9 @@ export default defineConfig({
     port: 5000,
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'https://mychat-ycy8.onrender.com', // Update this line
         changeOrigin: true,
       },
-    },
+    },    
   }
 })
