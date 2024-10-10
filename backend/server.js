@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://ayanbanglawala.github.io/MyChat",  // Allow frontend requests from this origin
+    origin: "http://localhost:5000", // Allow frontend requests from this origin
     methods: ["GET", "POST", "PUT", "DELETE"], // Allow these HTTP methods
     allowedHeaders: ["Content-Type", "Authorization"], // Allow these headers
   })
