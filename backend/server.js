@@ -21,6 +21,17 @@ const __dirname = path.resolve();
 // Middleware setup
 app.use(express.json());
 app.use(cookieParser());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5000",              // local frontend (dev)
+      "https://my-chat-two-drab.vercel.app" // deployed frontend (prod)
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // allow cookies and auth headers
+  })
+);
 
 // Database connection
 connectToMongo();
