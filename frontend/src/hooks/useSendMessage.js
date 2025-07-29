@@ -9,7 +9,7 @@ const useSendMessage = () => {
   const sendMessage = async (message, refreshMessages) => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/message/send/${selectedConversation._id}`, {
+      const res = await fetch(`https://my-chat-two-drab.vercel.app/api/message/send/${selectedConversation._id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
