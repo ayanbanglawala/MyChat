@@ -21,13 +21,6 @@ const __dirname = path.resolve();
 // Middleware setup
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: "http://localhost:5000", // Allow frontend requests from this origin
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allow these HTTP methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Allow these headers
-  })
-);
 
 // Database connection
 connectToMongo();
@@ -36,13 +29,6 @@ connectToMongo();
 app.use("/api/auth", authRoutes);
 app.use("/api/message", messageRoutes); // Make sure this route is correct
 app.use("/api/users", userRoutes);
-
-
-app.use(express.static(path.join(__dirname, "/frontend/dist")))
-
-app.get("*", (req,res)=>{
-  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"))
-})
 
 // Start the server
 server.listen(port, () => {
