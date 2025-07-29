@@ -25,7 +25,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5000",              // local frontend (dev)
-      "https://my-chat-two-drab.vercel.app" // deployed frontend (prod)
+      "https://my-chat-app-phi-nine.vercel.app" // deployed frontend (prod)
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
